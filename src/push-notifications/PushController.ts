@@ -10,6 +10,14 @@ export class PushController {
   @UseGuards(AuthGuard)
   @Post()
   sendNotification(@Body() notificationDto: NotificationDto): Promise<string> {
-    return this.pushService.sendNotification(notificationDto, user); 
+    getAuth().verifyIdToken(idToken).then((decodedToken) => {
+      return this.pushService.sendNotification(notificationDto, user); 
+    })
+    .catch((error) => {
+      return null;
+    });
+    
   }
 }
+
+
