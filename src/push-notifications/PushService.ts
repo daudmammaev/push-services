@@ -3,7 +3,7 @@ import { SchedulerRegistry } from '@nestjs/schedule';
 import { CronJob } from 'cron';
 import { Notification } from './Notification';
 import { EmailService } from '../Email/EmailService';
-import { NotificationDto } from '../Dto/NotificationDto';
+import { NotificationDto } from './NotificationDto';
 
 @Injectable()
 export class PushService {

@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { PushService } from './PushService';
 import { CronJob } from 'cron';
-import { NotificationDto } from '../Dto/NotificationDto';
+import { NotificationDto } from './NotificationDto';
 
 @Controller("/notification")
 export class PushController {
