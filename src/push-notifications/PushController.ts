@@ -1,15 +1,17 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { PushService } from './PushService';
 import { CronJob } from 'cron';
 import { NotificationDto } from './NotificationDto';
+import { AuthGuard } from 'src/auth/AuthGuard';
+import { User } from 'src/User/user';
 
-@Controller("/notification")
+@Controller("notification")
 export class PushController {
   constructor(private readonly pushService: PushService) {}
 
-  @UseGuards(AuthGuard)
+  //@UseGuards(AuthGuard)
   @Post()
-  sendNotification(@Body() notificationDto: NotificationDto): Promise<string> {
+  sendNotification(@Body() notificationDto: NotificationDto, user: User): Promise<string> {
     return this.pushService.sendNotification(notificationDto, user); 
   }
 }

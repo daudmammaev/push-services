@@ -1,13 +1,12 @@
+import { TimeoutInfo } from 'rxjs';
 import {Entity}  from 'typeorm';
 
 @Entity()
 export class Notification {
-    second:string;
-    minute:string; 
-    hour:string;
-    day:string;
-    months:string; 
-    dayOfWeek:string;
+    date:Date;
+    time: string;
+    enddate: Date = new Date();
+    cron: string;
     subject: string; 
     text: string;
 }

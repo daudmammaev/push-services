@@ -1,11 +1,10 @@
 
 export class NotificationDto {
-    second:string;
-    minute:string; 
-    hour:string;
-    day:string;
-    months:string; 
-    dayOfWeek:string;
+    date:Date;
+    time: string;
+    n:number;
+    enddate: Date = new Date();
+    cron:string;
     subject: string; 
     text: string;
 }
