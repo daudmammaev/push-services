@@ -28,13 +28,10 @@ export class PushService {
       }
       let count = 1;
       const job = new CronJob(notification.cron, () => {
-        //this.emailService.sendMail(user.email, notification.subject, notification.text)
-        if(count == job.n || job.lastDate().getTime() >= notification.enddate.getTime()){
+        this.emailService.sendMail(user.email, notification.subject, notification.text)
+        if(count == job.n || job.lastDate().getTime() + 100000 >= notification.enddate.getTime()){
           job.stop();
         }else{
-          console.log(count) // для проверки
-          console.log(job.lastDate().getTime()) // для проверки
-          console.log(notification.enddate.getTime()) // для проверки
           count += 1; 
         }
       });
